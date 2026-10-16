@@ -8,12 +8,12 @@
 <link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#111214; --ink:#ebe8e3; --muted:#9b9a97; --rule:#27282c; --soft:#1a1b1e;
-  --accent:#f2b646;   /* the one colour; change it to anything */
-  --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --accent:#8ab4f8;   /* link colour; change it to anything */
+  --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:var(--sans);
   color-scheme:dark;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -22,33 +22,27 @@ a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline;text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 img{display:block;max-width:100%}
-.mono{font-family:var(--mono);font-size:.8rem}
+.mono{font-size:.88rem}
 .muted{color:var(--muted)}
-.todo{display:block;border:1px dashed var(--muted);color:var(--muted);padding:10px 12px;font:.8rem var(--mono);border-radius:4px}
+.todo{display:block;border:1px dashed var(--muted);color:var(--muted);padding:10px 12px;font-size:.85rem}
 span.todo{display:inline-block;padding:0 6px}
 .links{display:flex;flex-wrap:wrap;gap:6px 18px}
 .links .discord{color:var(--muted);white-space:nowrap}
 
-.bar{max-width:1440px;margin:0 auto;padding:20px 32px;display:flex;justify-content:space-between;align-items:center}
+.bar{max-width:1440px;margin:0 auto;padding:20px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px}
 .bar b{font-weight:600}
 .bar nav{display:flex;gap:20px}
-.bar nav a{color:var(--muted)}
+.bar nav a{color:var(--muted);text-decoration:none}
 .bar nav a:hover{color:var(--ink)}
 
 /* top: big lead photo + you */
-.hero{max-width:1240px;margin:0 auto;padding:32px 32px 40px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:64px;align-items:center}
+.hero{max-width:1440px;margin:0 auto;padding:56px 32px 24px;display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:56px;align-items:center}
+.hero .pfp{margin:0;max-width:none}
+.hero .pfp img{width:100%;aspect-ratio:auto;border-radius:8px}
 figure.lead{max-width:none}
-.lead img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px}
+.lead img{width:100%;aspect-ratio:1;object-fit:cover}
 .lead figcaption{max-width:520px}
 .me>*+*{margin-top:14px}
-/* profile picture with soft, faded edges */
-.pfp{width:260px;height:320px;margin-bottom:10px;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 84%,transparent 100%),linear-gradient(to right,transparent 0%,#000 16%,#000 84%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:linear-gradient(to bottom,transparent 0%,#000 16%,#000 84%,transparent 100%),linear-gradient(to right,transparent 0%,#000 16%,#000 84%,transparent 100%);
-  mask-composite:intersect}
-.pfp.big{width:100%;height:auto;aspect-ratio:1;margin:0}
-.pfp img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .status{color:var(--muted)}
 h1{font-size:2.9rem;line-height:1.08;font-weight:600;letter-spacing:-.02em}
 
@@ -62,20 +56,20 @@ figure.big{max-width:340px}
 figure.small{max-width:170px}
 figure.drop{margin-top:100px}
 figure button{all:unset;display:block;cursor:zoom-in;width:100%}
-figure img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px}
+figure img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px}
 figure.tall img{aspect-ratio:auto}
 figure.tall.crop img{aspect-ratio:1.1/1;object-position:bottom}
 figcaption{margin-top:8px}
-.place{display:block;font:.75rem/1.4 var(--mono);color:var(--muted)}
+.place{display:block;font-size:.82rem;line-height:1.45;color:var(--muted)}
 .place.todo{display:inline-block;padding:1px 6px;font-size:.7rem}
 .story{display:block;margin-top:6px;font-size:.92rem;line-height:1.5;color:var(--ink)}
-.story.todo{font:.75rem var(--mono);color:var(--muted)}
+.story.todo{font-size:.82rem;color:var(--muted)}
 
 /* clusters: small photos from the same place, one caption */
 .cluster{max-width:300px}
 .cluster.big{max-width:360px}
 .cluster .grid{display:grid;grid-template-columns:repeat(var(--cols,2),1fr);gap:6px}
-.cluster .grid img{border-radius:2px}
+.cluster .grid img{border-radius:4px}
 .cluster .grid .wide{grid-column:1/-1}
 .cluster .grid .wide img{aspect-ratio:auto}
 .cluster .grid .wide.short img{aspect-ratio:16/10}
@@ -108,18 +102,18 @@ h2{font-size:1.4rem;font-weight:600;letter-spacing:-.01em}
 .rows li:last-child{border-bottom:none}
 
 table{width:100%;border-collapse:collapse;font-size:.92rem}
-th{text-align:left;font:500 .72rem var(--mono);color:var(--muted);padding:0 12px 8px 0;border-bottom:1px solid var(--rule)}
+th{text-align:left;font-weight:500;font-size:.82rem;color:var(--muted);padding:0 12px 8px 0;border-bottom:1px solid var(--rule)}
 td{padding:9px 12px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top}
-td:first-child{font:.78rem var(--mono);color:var(--muted);white-space:nowrap;padding-top:12px}
+td:first-child{font-size:.85rem;color:var(--muted);white-space:nowrap;padding-top:11px}
 td:last-child{color:var(--muted)}
-tr.group td{font:500 .72rem var(--mono);color:var(--ink);padding-top:24px;border-bottom:none}
+tr.group td{font-weight:600;font-size:.9rem;color:var(--ink);padding-top:24px;border-bottom:none}
 .table-wrap{overflow-x:auto}
 
 dialog{border:none;padding:0;background:transparent;max-width:min(92vw,1100px);margin:auto}
 dialog::backdrop{background:rgba(8,8,10,.94)}
-dialog img{max-height:82vh;width:auto;margin:0 auto;border-radius:3px}
-dialog p{color:#ccc;text-align:center;margin-top:10px;font:.8rem var(--mono)}
-dialog .x{position:fixed;top:16px;right:20px;background:none;border:none;color:#fff;font:500 .85rem var(--mono);cursor:pointer}
+dialog img{max-height:82vh;width:auto;margin:0 auto;border-radius:6px}
+dialog p{color:#ccc;text-align:center;margin-top:10px;font-size:.88rem}
+dialog .x{position:fixed;top:16px;right:20px;background:none;border:none;color:#fff;font:500 .9rem var(--sans);cursor:pointer}
 
 /* things I've done: wide, two columns of table, photos in two columns on the right */
 .done-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
@@ -149,13 +143,13 @@ dialog .x{position:fixed;top:16px;right:20px;background:none;border:none;color:#
 .misc .col figure,.misc .finale figure{max-width:none}
 .misc .finale{display:grid;grid-template-columns:minmax(0,800px) minmax(0,1fr);gap:48px;align-items:start;margin-top:72px}
 .misc .finale .after{align-self:stretch;display:flex;flex-direction:column}
-.gloss-h{font-weight:500;color:var(--muted);text-transform:lowercase;margin:auto 0 10px;padding-top:28px;font-size:.8rem;letter-spacing:.04em}
+.gloss-h{font-weight:600;color:var(--ink);margin:auto 0 10px;padding-top:28px;font-size:.95rem}
 .gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px 28px;margin:0;font-size:.82rem}
 .gloss div{display:grid;grid-template-columns:4.6em 1fr;gap:10px;align-items:baseline}
-.gloss dt{font:.78rem var(--mono);color:var(--ink)}
+.gloss dt{font-weight:500;color:var(--ink)}
 .gloss dd{margin:0;color:var(--muted);line-height:1.35}
 .updated{margin-top:56px;text-align:center}
-.misc .finale img{aspect-ratio:auto;border-radius:4px}
+.misc .finale img{aspect-ratio:auto;border-radius:8px}
 @media (min-width:1101px) and (max-width:1340px){.sign-off{font-size:1.5rem}.gloss{font-size:.78rem;gap:4px 24px}.gloss div{grid-template-columns:4.2em 1fr}}
 .sign-off{font-size:2rem;line-height:1.25;font-weight:600;letter-spacing:-.01em;max-width:560px}
 .cluster.feature.sq .grid{aspect-ratio:3/2}
@@ -192,7 +186,8 @@ dialog .x{position:fixed;top:16px;right:20px;background:none;border:none;color:#
 }
 
 @media (max-width:1100px){
-  .hero{grid-template-columns:1fr;gap:36px;max-width:680px;padding:24px 20px 32px}
+  .hero{max-width:680px;padding:24px 20px 16px;grid-template-columns:1fr;gap:28px}
+  .hero .pfp{order:-1}
   .sec{grid-template-columns:1fr 1fr;column-gap:12px;row-gap:24px;max-width:680px;padding:44px 20px}
   .main{grid-column:1/-1;order:-1}
   .rail{display:contents}
@@ -219,7 +214,6 @@ dialog .x{position:fixed;top:16px;right:20px;background:none;border:none;color:#
 </header>
 
 <section class="hero">
-  <div class="pfp big"><img src="photos/me.jpg" alt="Illustration of me watching a plane fly over"></div>
   <div class="me">
     <p class="status mono">Mumbai, IN 🇮🇳 / 16 / A-Levels: Phys, Chem, Maths, Further Maths</p>
     <h1>hi, i'm Dhruv.</h1>
@@ -229,8 +223,9 @@ dialog .x{position:fixed;top:16px;right:20px;background:none;border:none;color:#
          <p>i'm into <a href="LINK">the cosmic distance ladder</a>, <a href="LINK">airports</a>, <a href="LINK">the A350</a> and <a href="LINK">indian railways</a>.</p> -->
     <p>less academically, i love aviation & railways, (public transit in general, really!) as well as some amateur photography (some of which you see on this website) with my Nothing Phone (2a).</p>
     <p class="links mono"><a href="mailto:dhruvsinghvi09@gmail.com">Email</a><a href="https://www.linkedin.com/in/dhruv-singhvi/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.instagram.com/singhvi101/" target="_blank" rel="noopener">Instagram</a><span class="discord" title="Discord username">Discord: @singhvi101</span></p>
-    <p class="status mono">Life's motto: Go on Sidequests & Maximise Whimsy.</p>
+    <p class="status mono">Life's motto: go on sidequests & maximise whimsy.</p>
   </div>
+  <figure class="pfp"><img src="photos/me-hbcse-sm.jpg" srcset="photos/me-hbcse-sm.jpg 960w, photos/me-hbcse.jpg 1600w" sizes="(max-width:1100px) 100vw, 760px" alt="Me in a Non-Trivial hoodie outside HBCSE"></figure>
 </section>
 <section class="sec done">
   <div class="main">
@@ -248,7 +243,7 @@ dialog .x{position:fixed;top:16px;right:20px;background:none;border:none;color:#
       <tr class="group"><td colspan="3">misc. science</td></tr>
       <tr><td>2024</td><td><a href="https://www.nyas.org/learning/high-school-research-programs/the-junior-academy/" target="_blank" rel="noopener">NYAS Junior Academy</a></td><td>E-waste project, 5-country team</td></tr>
 
-      <tr class="group"><td colspan="3">effective altruism</td></tr>
+      <tr class="group"><td colspan="3">doing good, with numbers</td></tr>
       <tr><td>2026–</td><td>Peer research advisor, <a href="https://www.non-trivial.org/" target="_blank" rel="noopener">Non-Trivial</a></td><td>Mentoring the 2026 cohort</td></tr>
       <tr><td>2026</td><td>Mathematics of Morality, <a href="https://leaf.courses/" target="_blank" rel="noopener">Leaf</a></td><td>Finalist</td></tr>
       <tr><td>2025</td><td>Non-Trivial <a href="https://www.non-trivial.org/programs/research-fellows" target="_blank" rel="noopener">Fellowship</a></td><td>150 of 7,000+; report on Mumbai transit and air pollution</td></tr>
@@ -321,9 +316,6 @@ dialog .x{position:fixed;top:16px;right:20px;background:none;border:none;color:#
     <h2 id="thoughts">recent musings & thoughts</h2>
     <!-- TODO: two or three paragraphs of things you've been thinking about lately. One <p> per paragraph. -->
     <!-- TODO --><p><b>#1</b> The time is approaching when I'm doing many 'lasts' before I move out for college. I've been reflecting on the city lately, and how the culture of Mumbai has shaped me. Just wrapped up my last <a href="https://en.wikipedia.org/wiki/Ganesh_Chaturthi" target="_blank" rel="noopener">Ganesh Chaturthi</a> at home, and even as an atheist, it's a fact that the festival isn't the same anywhere else in the whole world. I've also been thinking about what the 'spirit' of the city really is, with its flashy, gorgeous airport architecture juxtaposed with Asia's largest slum: can we even name something that unifies all Mumbaikars as one?</p>
-    </div>
-    <div class="part" style="--o:9">
-    <!-- TODO --><p><b>#2</b> <a href="https://openai.com/index/navier-stokes-solution/" target="_blank" rel="noopener">OpenAI (allegedly) solving Navier–Stokes</a> has been weird. My older friends well into their BSc and MSc degrees have felt the atmosphere of doom & despair. I did too, considering I wanna do physics for life. Listening to Terry Tao's thoughts helped: I'm not doing physics primarily to help the world, I'm doing it because of the joy of understanding stuff. AI can't replicate the euphoria of solving what felt unsolvable. That's going to stay human. The aim was always to further <b>human</b> understanding.</p>
     </div>
 
     <div class="part sp part-links" style="--o:10">
